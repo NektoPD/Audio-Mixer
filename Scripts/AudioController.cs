@@ -13,16 +13,6 @@ public class AudioController : MonoBehaviour
     private float _maxVolume = 0;
     private bool _isMaxVolume = true;
 
-    private void SetSliderVolume(string parameterName, float volume)
-    {
-        _mixer.audioMixer.SetFloat(parameterName, Mathf.Lerp(_minVolume, _maxVolume, volume));
-    }
-
-    private void SetMasterVolume(float volume)
-    {
-        _mixer.audioMixer.SetFloat(MasterVolumeParameter, volume);
-    }
-
     public void ToggleMusicState()
     {
         if (!_isMaxVolume)
@@ -50,5 +40,15 @@ public class AudioController : MonoBehaviour
     public void SetBackgroundVolume(float volume)
     {
         SetSliderVolume(BackgroundVolumeParameter, volume);
+    }
+
+    private void SetSliderVolume(string parameterName, float volume)
+    {
+        _mixer.audioMixer.SetFloat(parameterName, Mathf.Lerp(_minVolume, _maxVolume, volume));
+    }
+
+    private void SetMasterVolume(float volume)
+    {
+        _mixer.audioMixer.SetFloat(MasterVolumeParameter, volume);
     }
 }
